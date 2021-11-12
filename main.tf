@@ -18,11 +18,11 @@ terraform {
 }
 
 #provider "google" {
-  #credentials = file("C:/keys/flash-surge-331812-6d0a2709fccf.json")
+#credentials = file("C:/keys/flash-surge-331812-6d0a2709fccf.json")
 
-  #project = "flash-surge-331812"
-  #region  = "asia-south1"
-  #zone    = "asia-south1-a"
+#project = "flash-surge-331812"
+#region  = "asia-south1"
+#zone    = "asia-south1-a"
 #}
 
 resource "google_compute_network" "vpc_network" {
