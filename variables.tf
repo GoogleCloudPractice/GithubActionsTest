@@ -14,3 +14,8 @@ variable "zone" {
   type    = string
   default = "europe-west2-a"
 }
+
+variable "google_credentials" {
+  type    = string
+  default = "europe-west2-a"
+}
