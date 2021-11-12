@@ -77,9 +77,13 @@ jobs:
       run: terraform init
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
+        
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
+      run: terraform fmt
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Format check
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
