@@ -15,7 +15,7 @@ terraform {
     project = var.project_id
     bucket  = "terraform-state"
     prefix  = "terraform/state/dev/d001"
-    credentials = "credentials.json"
+    credentials = "${var.credentials}"
   }
 }
 
