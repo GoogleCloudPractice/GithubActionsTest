@@ -5,10 +5,20 @@ terraform {
       version = "3.5.0"
     }
   }
+
+  backend "remote" {
+    # The name of your Terraform Cloud organization.
+    organization = "nagaraju4238-training"
+
+    # The name of the Terraform Cloud workspace to store Terraform state files in.
+    workspaces {
+      name = "hashicat-gcp"
+    }
+  }
 }
 
 provider "google" {
-  credentials = file("C:/keys/flash-surge-331812-6d0a2709fccf.json")
+  #credentials = file("C:/keys/flash-surge-331812-6d0a2709fccf.json")
 
   project = "flash-surge-331812"
   region  = "asia-south1"
