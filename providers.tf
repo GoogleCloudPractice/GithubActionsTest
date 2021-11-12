@@ -28,6 +28,7 @@ terraform {
   }
 }*/
 
+#Edited
 /*terraform {
   backend "gcs" {
     project = var.project_id
