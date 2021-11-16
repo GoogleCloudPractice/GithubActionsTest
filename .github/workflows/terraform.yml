@@ -74,7 +74,7 @@ jobs:
 
     - name: Setup Cloud SDK
       env:
-        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }
+        GOOGLE_APPLICATION_CREDENTIALS: key.json
       uses: google-github-actions/setup-gcloud@master
       with:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
@@ -121,8 +121,8 @@ jobs:
      # Upload code files into GCP bucket
     - name: Upload Code files
       run: gsutil cp Code_Files/Area_of_Triangle.py gs://github-actions-practice-bucket-4238/Code_Files/
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }
+      #env:
+        #GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }
     
     # Copy the Codes files from GCS bucket to VM
     - name: copy the code file to the VM
