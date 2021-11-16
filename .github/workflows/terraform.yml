@@ -84,6 +84,10 @@ jobs:
       env:
         GOOGLE_APPLICATION_CREDENTIALS: key.json
         
+    - id: auth
+      uses: google-github-actions/auth@0.4.0
+      with: 
+        credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}        
         
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
