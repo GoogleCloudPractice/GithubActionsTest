@@ -25,10 +25,18 @@ region  = "asia-south1"
 zone    = "asia-south1-a"
 }*/
 
+# Create a VPC Network
 resource "google_compute_network" "vpc_network" {
   name = "terraform-network"
 }
 
+# Create a GCS Bucket
+resource "google_storage_bucket" "my_bucket" {
+name     = var.bucket_name
+location = var.region
+}
+
+#Create a VM instance
 resource "google_compute_instance" "vm_instance" {
   name         = "terraform-instance"
   machine_type = "f1-micro"
@@ -36,7 +44,7 @@ resource "google_compute_instance" "vm_instance" {
 
   boot_disk {
     initialize_params {
-      image = "cos-cloud/cos-stable"
+      image = "debian-cloud/debian-10"
     }
   }
 

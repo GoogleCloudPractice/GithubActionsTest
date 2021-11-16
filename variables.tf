@@ -19,3 +19,8 @@ variable "google_credentials" {
   type    = string
   default = "europe-west2-a"
 }
+variable "bucket_name" {
+  type    = string
+}
+
+
