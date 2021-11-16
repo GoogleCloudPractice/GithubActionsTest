@@ -79,7 +79,7 @@ jobs:
       with:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
         service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
-        #export_default_credentials: true
+        credentials: ${{ secrets.GOOGLE_CREDENTIALS }}
     - run: echo -n ${{ secrets.GOOGLE_CREDENTIALS }} | base64 --decode > key.json
       env:
         GOOGLE_APPLICATION_CREDENTIALS: key.json
@@ -123,8 +123,8 @@ jobs:
      # Upload code files into GCP bucket
     - name: Upload Code files
       run: gsutil cp Code_Files/Area_of_Triangle.py gs://github-actions-practice-bucket-4238/Code_Files/
-      env:
-        credentials: ${{ secrets.GOOGLE_CREDENTIALS }
+      #env:
+        #credentials: ${{ secrets.GOOGLE_CREDENTIALS }
     
     # Copy the Codes files from GCS bucket to VM
     - name: copy the code file to the VM
