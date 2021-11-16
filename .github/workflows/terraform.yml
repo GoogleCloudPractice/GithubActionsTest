@@ -107,6 +107,12 @@ jobs:
       run: terraform apply -auto-approve
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+    #gcloud credentials setup
+    - name: set gcp cradentilas
+      run:  gcloud info
+    - name: echo gcp cradentilas
+      run:  echo this is  ${GOOGLE_APPLICATION_CREDENTIALS}
      
      # Upload code files into GCP bucket
     - name: Upload Code files
