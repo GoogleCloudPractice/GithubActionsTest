@@ -80,7 +80,7 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT_ID }}
         service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
         #export_default_credentials: true
-    - run: echo -n ${{ secrets.GOOGLE_CREDENTIALS }} | base64 --decode > ${GOOGLE_APPLICATION_CREDENTIALS}
+    - run: echo -n ${{ secrets.GOOGLE_CREDENTIALS }} | base64 --decode > key.json
         
         
 
