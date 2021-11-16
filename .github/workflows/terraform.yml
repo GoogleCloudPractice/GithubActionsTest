@@ -72,22 +72,6 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-    - name: Setup Cloud SDK
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: key.json
-      uses: google-github-actions/setup-gcloud@master
-      with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
-        credentials: ${{ secrets.GOOGLE_CREDENTIALS }}
-        #- run: echo -n ${{ secrets.GOOGLE_CREDENTIALS }} | base64 --decode > key.json
-        
-    - name: auth
-      uses: google-github-actions/auth@v0.4.0
-      with: 
-        credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}        
-        
-
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
@@ -115,20 +99,20 @@ jobs:
       run: terraform apply -auto-approve
       #env:
         #GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
-    #gcloud credentials setup
-    - name: set gcp cradentilas
-      run:  gcloud info
-    - name: echo gcp cradentilas
-      run:  echo this is  ${GOOGLE_APPLICATION_CREDENTIALS}
-     
-     # Upload code files into GCP bucket
+    
+    - name: Setup Cloud SDK
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
+        #- run: echo -n ${{ secrets.GOOGLE_CREDENTIALS }} | base64 --decode > key.json
+        
+      #Upload code files into GCP bucket
     - name: Upload Code files
       run: gsutil cp Code_Files/Area_of_Triangle.py gs://github-actions-practice-bucket-4238/Code_Files/
-      #env:
-        #credentials: ${{ secrets.GOOGLE_CREDENTIALS }
     
-    # Copy the Codes files from GCS bucket to VM
+      #Copy the Codes files from GCS bucket to VM
     - name: copy the code file to the VM
       run: gsutil cp -r gs://github-actions-practice-bucket-4238/Code_Files/*  terraform-instance:~
       #env:
