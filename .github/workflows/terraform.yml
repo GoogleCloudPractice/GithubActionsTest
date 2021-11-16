@@ -81,6 +81,8 @@ jobs:
         service_account_key: ${{ secrets.GOOGLE_CREDENTIALS }}
         #export_default_credentials: true
     - run: echo -n ${{ secrets.GOOGLE_CREDENTIALS }} | base64 --decode > key.json
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: key.json
         
         
 
