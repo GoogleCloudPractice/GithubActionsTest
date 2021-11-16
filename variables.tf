@@ -21,7 +21,7 @@ variable "google_credentials" {
 }
 variable "bucket_name" {
   type    = string
-  default_value = "project_xyz_bucket_default_4238"
+  default = "project_xyz_bucket_default_4238"
 }
 
 
